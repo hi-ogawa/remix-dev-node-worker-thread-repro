@@ -2,7 +2,7 @@
   "name": "remix-dev-worker-thread",
   "private": true,
   "sideEffects": false,
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "build": "remix build",
     "build-worker": "tsup",
