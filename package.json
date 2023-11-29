@@ -5,11 +5,14 @@
   "type": "module",
   "scripts": {
     "build": "remix build",
+    "build-worker": "tsup",
     "dev": "remix dev --manual",
+    "dev-worker": "tsup --watch",
     "start": "remix-serve ./build/index.js",
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@hiogawa/utils": "1.6.1-pre.9",
     "@remix-run/css-bundle": "^2.3.1",
     "@remix-run/node": "^2.3.1",
     "@remix-run/react": "^2.3.1",
@@ -24,6 +27,7 @@
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "eslint": "^8.38.0",
+    "tsup": "^8.0.1",
     "typescript": "^5.1.6"
   },
   "engines": {
