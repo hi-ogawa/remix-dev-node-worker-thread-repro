@@ -1,28 +1,23 @@
 import { tinyassert } from "@hiogawa/utils";
 import { parentPort } from "node:worker_threads";
+import { expose}  from "comlink";
+// @ts-ignore
+import nodeEndpoint from "comlink/dist/esm/node-adapter.mjs";
 
 tinyassert(parentPort);
 const port = parentPort;
 
-// minimal copy from https://github.com/hi-ogawa/js-utils/blob/c55125e585d721fd34442e40a57b56f394fedd01/packages/tiny-rpc/src/adapter-message-port.ts
-export interface RequestPayload {
-  id: string;
-  data: string;
-}
+export type { MyService };
 
-export interface ResponsePayload {
-  id: string;
-  data: string;
+class MyService {
+  ping(data: string) {
+    return "pong from worker: " + data;
+  }
 }
 
 function main() {
-  port.on("message", (req: RequestPayload) => {
-    const res: ResponsePayload = {
-      id: req.id,
-      data: "pong from worker: " + req.data,
-    };
-    port.postMessage(res);
-  });
+  const myService = new MyService();
+  expose(myService, nodeEndpoint(port));
 }
 
 main();
