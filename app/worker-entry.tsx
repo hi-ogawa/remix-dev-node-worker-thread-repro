@@ -1,8 +1,7 @@
 import { tinyassert } from "@hiogawa/utils";
 import { parentPort } from "node:worker_threads";
 import { expose}  from "comlink";
-// @ts-ignore
-import nodeEndpoint from "comlink/dist/esm/node-adapter.mjs";
+import nodeEndpoint from "comlink/dist/umd/node-adapter";
 
 tinyassert(parentPort);
 const port = parentPort;

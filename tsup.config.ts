@@ -2,7 +2,7 @@ import { defineConfig } from "tsup";
 
 export default defineConfig({
   entry: ["app/worker-entry.tsx"],
-  format: ["esm"],
+  format: ["cjs"],
   platform: "node",
   noExternal: [/.*/]
 })

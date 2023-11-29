@@ -1,8 +1,7 @@
 import { Worker } from "node:worker_threads";
 import {wrap} from "comlink";
 import { MyService } from "./worker-entry";
-// @ts-ignore
-import nodeEndpoint from "comlink/dist/esm/node-adapter.mjs";
+import nodeEndpoint from "comlink/dist/umd/node-adapter";
 
 export const workerProxy = memoizeGlobal("workerProxy", initWorkerProxy);
 
